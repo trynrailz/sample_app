@@ -24,6 +24,8 @@ group :test, :development do
 	gem 'guard-rspec'
 	gem 'guard-spork'
 	gem 'spork'
+	gem 'spork-rails', "4.0.0"
+	gem 'childprocess'
 end
 
 group :test do
@@ -31,6 +33,8 @@ group :test do
 	gem 'factory_girl_rails'
 	gem 'cucumber-rails'
 	gem 'database_cleaner'
+	gem 'rb-fsevent', :require => false
+	gem 'growl'
 end
 
 group :production do
