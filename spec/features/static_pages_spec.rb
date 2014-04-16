@@ -1,54 +1,51 @@
 require "spec_helper"
 
 feature "Static pages" do
-  scenario "Home page" do
-      visit '/static_pages/home'
+  before { visit root_path }
+  scenario "Home page" do   
       expect(page).to have_title('Ruby on Rails Tutorial Sample App')
-  end
-
-  scenario "Home page" do
-      visit '/static_pages/home'
       expect(page).to have_selector('h1', :text => 'Sample App')
-  end
-
-  scenario "Home page" do
-      visit '/static_pages/home'
       expect(page).not_to have_title(' | Home')
   end
 end
 
 feature "Static pages" do
+  before { visit help_path }
   scenario "Help page" do
-      visit '/static_pages/help'
       expect(page).to have_title('Ruby on Rails Tutorial Sample App | Help')
-  end
-
-  scenario "Help page" do
-      visit '/static_pages/help'
       expect(page).to have_selector('h1', 'Help')
   end
 end
 
 feature "Static pages" do
+  before {visit about_path }
   scenario "About page" do
-      visit '/static_pages/about'
       expect(page).to have_title('Ruby on Rails Tutorial Sample App | About')
-  end
-
-  scenario "About page" do
-      visit '/static_pages/about'
       expect(page).to have_selector('h1', 'About Us')
   end
 end
 
 feature "Static pages" do
+  before { visit contact_path }
   scenario "Contact page" do
-      visit '/static_pages/contact'
       expect(page).to have_title('Ruby on Rails Tutorial Sample App | Contact')
+      expect(page).to have_selector('h1', 'Contact')
   end
+end
 
-  scenario "Contact pages" do
-      visit '/static_pages/contact'
-      expect(page).to have_selector('h1', 'Contact Us')
+feature "test" do
+  subject { page }
+  describe "Home Page" do
+    before {visit root_path}
+
+    it {should have_selector('h1', text: 'Welcome to the Sample App')}
+
+  end
+end
+
+feature "Static pages" do
+  before { visit signup_path }
+  scenario "Signup page" do
+      expect(page).to have_selector('h1', 'Sign up')
   end
 end
