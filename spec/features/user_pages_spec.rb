@@ -40,4 +40,13 @@ feature "signup" do
 
    end
 
+   scenario "after submission" do
+
+    let(:user) {User.find_by_email('user@example.com')}
+    before { click_button submit }
+
+    expect(page).to have_title(user.name)
+    expect(page).to have_selector('div.alert.alert-success', 'Welcome')
+   end
+
 end
